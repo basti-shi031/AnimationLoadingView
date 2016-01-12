@@ -6,10 +6,10 @@
 
 ### 代码部分的学习
 #### 项目结构
-![](http://7xpvut.com1.z0.glb.clouddn.com/animator1.png)
+![1](http://7xpvut.com1.z0.glb.clouddn.com/animator1.png)
 
 项目结构很清晰，AVLoadingIndicatorView类继承自View，是控件的具体实现类，这个控件有两个自定义属性：
-![](http://7xpvut.com1.z0.glb.clouddn.com/animator2.png)
+![2](http://7xpvut.com1.z0.glb.clouddn.com/animator2.png)
 
 1. 自定义属性 indicator_color 为AVLoadingIndicatorView的颜色，这个没什么好说的，
 2. 自定义属性 indicator 可以理解为 AVLoadingIndicatorView的具体样式，
@@ -69,7 +69,7 @@ BallPulseIndicator是效果图中最左上角的view，他实现了父类的两�
   分别调用 canvas.drawCircle(x,y,radius,paint);方法绘制三个圆点，每个圆点的radius相同，所以可以在循环外直接
   算出，x、y的值需要在循环内动态计算
 
-  ![](http://7xpvut.com1.z0.glb.clouddn.com/animator3.png)
+  ![3](http://7xpvut.com1.z0.glb.clouddn.com/animator3.png)
 
   从图中可以看出，半径radius = (控件宽度-2*圆点间间隔)/6，即
   ```java
