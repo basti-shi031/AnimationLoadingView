@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 第三个
  * Created by SHIBW-PC on 2016/1/14.
  */
 public class SquareSpinIndicator extends BaseLoadingView {

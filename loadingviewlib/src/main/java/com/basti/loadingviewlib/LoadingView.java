@@ -12,6 +12,7 @@ import com.basti.loadingviewlib.base.BaseLoadingView;
 import com.basti.loadingviewlib.loadingview.BallClipRotateIndicator;
 import com.basti.loadingviewlib.loadingview.BallClipRotatePulseIndicator;
 import com.basti.loadingviewlib.loadingview.BallPulseLoading;
+import com.basti.loadingviewlib.loadingview.BallPulseRiseIndicator;
 import com.basti.loadingviewlib.loadingview.SquareSpinIndicator;
 import com.basti.loadingviewlib.utils.DimensionUtils;
 
@@ -60,6 +61,8 @@ public class LoadingView extends View {
             case 2:mLoadingView = new BallClipRotatePulseIndicator();
                 break;
             case 3:mLoadingView = new SquareSpinIndicator();
+                break;
+            case 4:mLoadingView = new BallPulseRiseIndicator();
                 break;
         }
 

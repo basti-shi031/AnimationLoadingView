@@ -39,6 +39,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 app:indicator="SquareSpin" />
+
+            <com.basti.loadingviewlib.LoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:indicator="BallPulseRise" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
