@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 坐标[0,0]
+ * 第0个
  * Created by SHIBW-PC on 2016/1/11.
  */
 public class BallPulseLoading extends BaseLoadingView {
@@ -51,7 +51,7 @@ public class BallPulseLoading extends BaseLoadingView {
 
     //初始化动画
     @Override
-    public List<Animator> InitAnimator() {
+    public List<Animator> initAnimator() {
 
         List<Animator> mAnimators = new ArrayList<>();
 

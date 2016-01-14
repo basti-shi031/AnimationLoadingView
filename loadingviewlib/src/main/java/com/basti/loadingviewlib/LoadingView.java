@@ -9,7 +9,10 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.basti.loadingviewlib.base.BaseLoadingView;
+import com.basti.loadingviewlib.loadingview.BallClipRotateIndicator;
+import com.basti.loadingviewlib.loadingview.BallClipRotatePulseIndicator;
 import com.basti.loadingviewlib.loadingview.BallPulseLoading;
+import com.basti.loadingviewlib.loadingview.SquareSpinIndicator;
 import com.basti.loadingviewlib.utils.DimensionUtils;
 
 /**
@@ -44,13 +47,19 @@ public class LoadingView extends View {
     }
 
     private void initAnimators() {
-        mLoadingView.InitAnimator();
+        mLoadingView.initAnimator();
     }
 
     private void initLoadingView() {
 
         switch (mIndicatorId){
             case 0:mLoadingView = new BallPulseLoading();
+                break;
+            case 1:mLoadingView = new BallClipRotateIndicator();
+                break;
+            case 2:mLoadingView = new BallClipRotatePulseIndicator();
+                break;
+            case 3:mLoadingView = new SquareSpinIndicator();
                 break;
         }
 

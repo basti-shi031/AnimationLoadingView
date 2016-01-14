@@ -21,7 +21,7 @@ public abstract class BaseLoadingView {
 
     public abstract void draw(Canvas canvas,Paint paint);
 
-    public abstract List<Animator> InitAnimator();
+    public abstract List<Animator> initAnimator();
 
     public float getWidth(){
         if (v == null){
@@ -39,6 +39,10 @@ public abstract class BaseLoadingView {
 
     public void setView(View view){
         v = view;
+    }
+
+    public View getView(){
+        return v;
     }
 
     public void postInvalidate(){

@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.basti.learnanimation.MainActivity"
-    android:background="?attr/colorPrimary">
+    android:background="?attr/colorPrimary"
+    tools:context="com.basti.learnanimation.MainActivity">
 
-    <com.basti.loadingviewlib.LoadingView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:indicator="BallPulse"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.basti.loadingviewlib.LoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:indicator="BallPulse" />
+
+            <com.basti.loadingviewlib.LoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:indicator="BallClipRotate" />
+
+            <com.basti.loadingviewlib.LoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:indicator="BallClipRotatePulse" />
+
+            <com.basti.loadingviewlib.LoadingView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:indicator="SquareSpin" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
