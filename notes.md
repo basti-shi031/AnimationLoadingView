@@ -6,10 +6,10 @@
 
 ### 代码部分的学习
 #### 项目结构
-![1](http://7xpvut.com1.z0.glb.clouddn.com/animator1.png)
+![](http://7xpvut.com1.z0.glb.clouddn.com/animator1.png)
 
 项目结构很清晰，AVLoadingIndicatorView类继承自View，是控件的具体实现类，这个控件有两个自定义属性：
-![2](http://7xpvut.com1.z0.glb.clouddn.com/animator2.png)
+![](http://7xpvut.com1.z0.glb.clouddn.com/animator2.png)
 
 1. 自定义属性 indicator_color 为AVLoadingIndicatorView的颜色，这个没什么好说的，
 2. 自定义属性 indicator 可以理解为 AVLoadingIndicatorView的具体样式，
@@ -69,7 +69,7 @@ BallPulseIndicator是效果图中最左上角的view，他实现了父类的两�
   分别调用 canvas.drawCircle(x,y,radius,paint);方法绘制三个圆点，每个圆点的radius相同，所以可以在循环外直接
   算出，x、y的值需要在循环内动态计算
 
-  ![3](http://7xpvut.com1.z0.glb.clouddn.com/animator3.png)
+  ![](http://7xpvut.com1.z0.glb.clouddn.com/animator3.png)
 
   从图中可以看出，半径radius = (控件宽度-2*圆点间间隔)/6，即
   ```java
@@ -99,3 +99,39 @@ BallPulseIndicator是效果图中最左上角的view，他实现了父类的两�
     需要注意的是，程序中save方法的调用次数一定是大于等于restore方法的，即save后才可能有restore操作。
 
 到此，BallPulseIndicator的绘制就已经全部完成了。
+
+##### BallGridPulseIndicator类
+BallGridPulseIndicator类的实现和BallPulseIndicator类的实现很类似，只是在后者的基础上多了alpha通道的动画，这里就不详细说明了。
+
+##### BallClipRotateIndicator类
+BallClipRotateIndicator的基本实现原理是canvas.drawArc绘制一个圆弧，同时canvas.scale()负责缩放动画，canvas.rotate()负责旋转动画，需要注意的是：
+**调用canvas.rotate()方法旋转时，旋转的圆心是画布的圆点，即画布的左上定点**，这个显然是不符合要求的，为了使其围绕圆点旋转，在调用canvas.rotate()方法前必须调用
+canvas.translate(x,y)方法将画布的圆点调整到（x,y）处。
+
+##### BallClipRotatePulseIndicator类
+BallClipRotatePulseIndicator类的实现与BallClipRotateIndicator类相似，只需要注意画圆心之前先调用canvas.save()方法保存画布状态，否则圆心和圆弧的缩放大小会一样。
+
+##### SquareSpinIndicator类
+这个类的动画效果主要是翻转，并没有其他的动画，所以我们在draw方法中很简单的绘制一个矩形
+```java
+canvas.drawRect(new RectF(getWidth() / 5, getHeight() / 5, getWidth() * 4 / 5, getHeight() * 4 / 5), paint);
+```
+动画效果在initAnimator()中实现
+翻转涉及到两个动画，围绕x轴和围绕y轴，我们可以使用PropertyValuesHolder类和ObjectAnimator配合完成动画效果
+
+首先，设置围绕x轴翻转的动画
+```java
+PropertyValuesHolder xProperty = PropertyValuesHolder.ofFloat("rotationX",0,180,180,0,0);
+```
+数字表示翻转的具体角度。同理设置围绕y轴的翻转动画
+```java
+ PropertyValuesHolder yProperty = PropertyValuesHolder.ofFloat("rotationY",0,0,180,180,0);
+```
+使用ObjectAnimator实现总体效果
+```java
+ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(getView(),xProperty,yProperty);
+```
+getView()方法是为了得到动画需要作用到的view。
+
+##### BallClipRotateMultiple类
+这个类和BallClipRotatePulseIndicator类的实现原理基本一样。
